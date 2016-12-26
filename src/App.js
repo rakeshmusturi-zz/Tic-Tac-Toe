@@ -28,12 +28,12 @@ class App extends Component {
   }
   printWinner(stat){
     if(stat){
-      if(this.state.currentTurn=="X"){
+      if(this.state.currentTurn==="X"){
         var res="O";
       }else{
         res="X";
       }
-      return "The Winner is " +res;
+      return <h3>The Winner is {res}</h3>;
     }
   }
   checkForWinner() {
@@ -52,15 +52,13 @@ class App extends Component {
   render() {
     return (
       <div className="app-container">
-        {this.state.winner ? <h1>{`The winner is ${this.state.winner}`}</h1> : null}
+      {this.printWinner(this.state.winner)}
         <div className="board">
         {this.state.board.map((cell, index) => {
           return <div onClick={() => this.handleClick(index)} className="square">{cell}</div>;
         })}
         </div>
         <h3>{this.state.currentTurn} Turn Now</h3>
-        {this.printWinner(this.state.winner)}
-        
       </div>
     )
   }
